@@ -1,0 +1,135 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Poppins' sans-serif;
+}
+
+:root{
+    --dark: #34495E;
+    --light: #ffffff;
+    --success: #0ABF30;
+    --error: #E24D4C;
+    --warning: #E9BD0C;
+    --info: #3498DB; 
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--dark);
+}
+
+.notifications{
+    position: fixed;
+    top: 30px;
+    right: 20px;
+}
+
+.notifications :where(.toast, .column){
+    display: flex;
+    align-items: center;
+}
+
+.notifications .toast{
+    width: 400px;
+    border-radius: 4px;
+    padding: 16px 17px;
+    margin-bottom: 10px;
+    background: var(--light);
+    justify-content: space-between;
+    overflow: hidden;
+    position: relative;
+    /* animation: show_toast 0.3s ease forwards; */
+}
+
+@keyframes show_toast {
+    0% {
+        transform: translateX(100%);
+    }
+    40% {
+        transform: translateX(-5%);
+    }
+    80% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-10px);
+    }
+}
+
+.toast::before{
+    content: '';
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    left: 0px;
+    bottom: 0px;
+    /* animation: progress 5s linear forwards; */
+}
+
+@keyframes progress {
+    100%{
+        width: 0;
+    }
+}
+
+.toast.success::before, .btn#success{
+    background: var(--success);
+}
+.toast.warning::before, .btn#warning{
+    background: var(--warning);
+}
+.toast.error::before, .btn#error{
+    background: var(--error);
+}
+.toast.info::before, .btn#info{
+    background: var(--info);
+}
+
+.toast.success .column i{
+    color: var(--success);
+}
+.toast.warning .column i{
+    color: var(--warning);
+}
+.toast.error .column i{
+    color: var(--error);
+}
+.toast.info .column i{
+    color: var(--info);
+}
+
+.toast .column{
+    font-size: 1.75rem;
+}
+
+.toast .column span{
+    font-size: 1.07rem;
+    margin-left: 12px;
+}
+
+.toast i:last-child{
+    color: #aeb0d7;
+    cursor: pointer;
+}
+
+.toast i:last-child:hover{
+    color: var(--dark);
+}
+
+.buttons .btn{
+    border: none;
+    outline: none;
+    color: #fff;
+    cursor: pointer;
+    margin: 0 5px;
+    font-size: 1.2rem;
+    padding: 10px;
+    border-radius: 4px;
+
+}
